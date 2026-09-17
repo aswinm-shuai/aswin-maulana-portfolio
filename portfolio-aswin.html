@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aswin — Digital Business Student & Aspiring Data Engineer</title>
+<meta name="description" content="Portofolio personal Aswin. Mahasiswa Digital Business dengan ketertarikan pada data, teknologi, digital product, dan bisnis.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<style>
+:root{
+  --bg:#FDFFF6;
+  --accent:#0055FF;
+  --text:#111111;
+  --text-soft:#6B6B6B;
+  --soft-blue:#E8EFFF;
+  --border:#E8E8E2;
+  --surface:#FFFFFF;
+}
+:root:not([data-theme="light"]) {
+  --bg:#FDFFF6;
+  --accent:#0055FF;
+  --text:#111111;
+  --text-soft:#6B6B6B;
+  --soft-blue:#E8EFFF;
+  --border:#E8E8E2;
+  --surface:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) {
+    --bg:#FDFFF6;
+    --text:#111111;
+    --text-soft:#6B6B6B;
+    --surface:#FFFFFF;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#FDFFF6;
+  --text:#111111;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans', -apple-system, 'Segoe UI', sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.display{
+  font-family:'Space Grotesk','DM Sans',sans-serif;
+  font-weight:700;
+  letter-spacing:-0.02em;
+  line-height:1.02;
+  margin:0;
+}
+a{color:inherit;text-decoration:none;}
+.label{
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--text-soft);
+  font-weight:500;
+}
+.container-x{
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 32px;
+}
+section{padding:140px 0;position:relative;}
+@media(max-width:768px){ section{padding:90px 0;} }
+
+/* ---------- grain texture ---------- */
+.grain{
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:2;
+  opacity:0.035;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- scroll progress ---------- */
+.scroll-progress{
+  position:fixed;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  width:2px;
+  height:160px;
+  background:var(--border);
+  z-index:60;
+  border-radius:2px;
+}
+.scroll-progress-fill{
+  width:100%;
+  background:var(--accent);
+  height:0%;
+  border-radius:2px;
+  transition:height .1s linear;
+}
+@media(max-width:900px){ .scroll-progress{display:none;} }
+
+/* ---------- navbar ---------- */
+.navbar-custom{
+  position:fixed;
+  top:20px;
+  right:32px;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(253,255,246,0.75);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--border);
+  border-radius:100px;
+  padding:8px 8px;
+}
+.brand-mark{
+  position:fixed;
+  top:26px;
+  left:32px;
+  z-index:50;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:1.05rem;
+  letter-spacing:-0.02em;
+}
+.brand-mark:hover .brand-dot{color:var(--accent);}
+.nav-link-item{
+  position:relative;
+  padding:9px 16px;
+  font-size:0.76rem;
+  letter-spacing:0.1em;
+  font-weight:500;
+  border-radius:100px;
+  color:var(--text-soft);
+  transition:color .25s ease, background .25s ease;
+  cursor:pointer;
+}
+.nav-link-item:hover{color:var(--text);}
+.nav-link-item.active{color:var(--text);background:var(--soft-blue);}
+.nav-link-item.active .nav-dot{opacity:1;transform:scale(1);}
+.nav-dot{
+  display:inline-block;
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--accent);
+  margin-right:6px;
+  opacity:0;
+  transform:scale(0);
+  transition:all .25s ease;
+  vertical-align:middle;
+}
+.nav-toggle{
+  display:none;
+}
+@media(max-width:768px){
+  .navbar-custom{ display:none; }
+  .navbar-custom.mobile-open{
+    display:flex;
+    flex-direction:column;
+    top:70px;
+    right:20px;
+    left:20px;
+    border-radius:20px;
+    padding:14px;
+  }
+  .nav-toggle{
+    display:flex;
+    position:fixed;
+    top:18px;
+    right:20px;
+    z-index:55;
+    width:44px;height:44px;
+    align-items:center;
+    justify-content:center;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:50%;
+  }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:110px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:40px;
+  align-items:center;
+  width:100%;
+}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:56px;}
+  .hero{padding-top:130px;}
+}
+.hero h1{
+  font-size:clamp(2.6rem, 6.2vw, 5.4rem);
+}
+.hero-eyebrow{margin-bottom:22px;}
+.hero-sub{
+  font-size:1.15rem;
+  font-weight:500;
+  margin-top:26px;
+  color:var(--text);
+}
+.hero-desc{
+  max-width:440px;
+  color:var(--text-soft);
+  margin-top:16px;
+  font-size:1rem;
+}
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:38px;
+  padding:15px 28px;
+  background:var(--text);
+  color:var(--bg);
+  border-radius:100px;
+  font-size:0.82rem;
+  letter-spacing:0.08em;
+  font-weight:600;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), background .3s ease;
+}
+.hero-cta:hover{background:var(--accent);color:#fff;}
+.hero-cta span{transition:transform .3s ease;}
+.hero-cta:hover span{transform:translate(3px,-3px);}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:26px;
+  margin-top:64px;
+}
+.hero-meta div{
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--text-soft);
+  padding-left:14px;
+  border-left:2px solid var(--border);
+}
+
+.portrait-wrap{
+  display:flex;
+  justify-content:center;
+}
+.portrait-frame{
+  position:relative;
+  width:min(360px, 80vw);
+  aspect-ratio:4/5;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:10px;
+  background:var(--surface);
+  transform:rotate(-2deg);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.portrait-frame:hover{transform:rotate(0deg);}
+.portrait-inner{
+  width:100%;height:100%;
+  border-radius:12px;
+  background:linear-gradient(165deg,var(--soft-blue) 0%, #ffffff 55%, var(--soft-blue) 100%);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+}
+.portrait-monogram{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:8.5rem;
+  font-weight:700;
+  color:var(--accent);
+  opacity:0.14;
+  line-height:1;
+  margin-bottom:-0.06em;
+}
+.portrait-tag{
+  position:absolute;
+  bottom:16px;left:16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:7px 12px;
+  border-radius:100px;
+  font-size:0.66rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--text-soft);
+}
+.scroll-indicator{
+  position:absolute;
+  bottom:36px;left:32px;
+  font-size:0.68rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--text-soft);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.scroll-indicator .arrow-down{
+  display:inline-block;
+  animation:bob 2.2s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(5px);}
+}
+@media(max-width:768px){ .scroll-indicator{display:none;} }
+
+/* ---------- reveal ---------- */
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- about ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:70px;
+  align-items:center;
+}
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:48px;}
+  .about-grid .portrait-frame{order:2;}
+}
+.about-heading{
+  font-size:clamp(2rem, 4vw, 3rem);
+  margin-bottom:24px;
+}
+.about-text{
+  color:var(--text-soft);
+  font-size:1.05rem;
+  max-width:520px;
+}
+.pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:34px;
+}
+.pill{
+  border:1px solid var(--border);
+  padding:9px 16px;
+  border-radius:100px;
+  font-size:0.7rem;
+  letter-spacing:0.08em;
+  font-weight:600;
+  color:var(--text);
+  transition:background .25s ease, border-color .25s ease;
+}
+.pill:hover{background:var(--soft-blue);border-color:var(--accent);}
+
+.ticker-wrap{
+  margin-top:70px;
+  overflow:hidden;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:20px 0;
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  animation:ticker 26s linear infinite;
+  gap:0;
+}
+.ticker-track span{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1.4rem;
+  font-weight:600;
+  white-space:nowrap;
+  padding:0 22px;
+  color:var(--text-soft);
+}
+.ticker-track span.accent{color:var(--accent);}
+@keyframes ticker{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* ---------- experience ---------- */
+.exp-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:60px;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.exp-item{
+  display:grid;
+  grid-template-columns:70px 200px 1fr 40px;
+  gap:28px;
+  align-items:center;
+  padding:32px 20px;
+  border-top:1px solid var(--border);
+  transition:background .3s ease, padding-left .3s ease;
+  cursor:default;
+}
+.exp-item:last-child{border-bottom:1px solid var(--border);}
+.exp-item:hover{background:var(--soft-blue);padding-left:32px;}
+.exp-item:hover .exp-org{color:var(--accent);}
+.exp-item:hover .exp-arrow{transform:translateX(6px);}
+.exp-num{font-size:0.75rem;color:var(--text-soft);font-weight:500;}
+.exp-year{
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  color:var(--text-soft);
+  text-transform:uppercase;
+}
+.exp-body h3{font-size:1.3rem;margin-bottom:4px;}
+.exp-org{font-size:0.85rem;color:var(--text-soft);transition:color .3s ease;font-weight:500;}
+.exp-desc{font-size:0.88rem;color:var(--text-soft);margin-top:8px;max-width:520px;}
+.exp-arrow{
+  justify-self:end;
+  font-size:1.3rem;
+  color:var(--text-soft);
+  transition:transform .3s ease;
+}
+@media(max-width:768px){
+  .exp-item{grid-template-columns:36px 1fr 24px;grid-template-areas:"num year arrow" "num body body";row-gap:10px;}
+  .exp-num{grid-area:num;}
+  .exp-year{grid-area:year;}
+  .exp-body{grid-area:body;}
+  .exp-arrow{grid-area:arrow;}
+}
+
+/* ---------- certificates ---------- */
+.certificates-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+.cert-gallery{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding:8px 2px 18px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--accent) transparent;
+  scroll-snap-type:x proximity;
+}
+.cert-gallery::-webkit-scrollbar{height:8px;}
+.cert-gallery::-webkit-scrollbar-thumb{background:var(--border);border-radius:999px;}
+.cert-card{
+  position:relative;
+  flex:0 0 330px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .3s ease;
+  scroll-snap-align:start;
+  cursor:pointer;
+}
+.cert-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:0 16px 30px rgba(17,17,17,0.04);
+}
+.cert-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.cert-image-shell{
+  position:relative;
+  height:220px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#edf4ff 0%, #ffffff 40%, #e9f7ef 100%);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), filter .35s ease;
+}
+.cert-card:hover .cert-image-shell{transform:scale(1.04);}
+.cert-image-shell::before{
+  content:"";
+  position:absolute;
+  inset:16px;
+  border:1px solid rgba(17,17,17,0.18);
+  border-radius:12px;
+  background:rgba(255,255,255,0.3);
+}
+.certificate-image{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  object-fit:contain;
+  object-position:center;
+  border-radius:12px;
+  background:rgba(255,255,255,0.6);
+}
+.certificate-placeholder{
+  position:absolute;
+  inset:16px;
+  z-index:2;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid rgba(17,17,17,0.18);
+  border-radius:12px;
+  background:rgba(255,255,255,0.4);
+  color:var(--text-soft);
+  text-align:center;
+  font-size:0.62rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.certificate-placeholder small{
+  display:block;
+  font-size:0.56rem;
+  letter-spacing:0.06em;
+  text-transform:none;
+  font-weight:500;
+}
+.cert-image-shell.has-fallback .certificate-placeholder{display:flex;}
+.cert-image-shell:not(.has-fallback) .certificate-placeholder{display:none;}
+.cert-image-shell[data-tone="blue"]{background:linear-gradient(135deg,#edf4ff 0%, #ffffff 43%, #dfe9ff 100%);}
+.cert-image-shell[data-tone="green"]{background:linear-gradient(135deg,#edfaf3 0%, #ffffff 44%, #dff5ec 100%);}
+.cert-image-shell[data-tone="amber"]{background:linear-gradient(135deg,#fff6e6 0%, #ffffff 42%, #fff0cf 100%);}
+.cert-image-shell[data-tone="violet"]{background:linear-gradient(135deg,#f3edff 0%, #ffffff 40%, #eadfff 100%);}
+.cert-body{
+  padding:18px 18px 16px;
+}
+.cert-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1.15rem;
+  line-height:1.2;
+  margin:0 0 8px;
+}
+.cert-meta{
+  margin:0;
+  color:var(--text-soft);
+  font-size:0.9rem;
+}
+.cert-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--border);
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--text-soft);
+}
+.cert-foot .cert-category{color:var(--accent);font-weight:600;}
+.cert-arrow{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:26px;height:26px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  transition:transform .3s ease, border-color .3s ease, background .3s ease;
+  font-size:1rem;
+  color:var(--text);
+}
+.cert-card:hover .cert-arrow{
+  transform:translateX(5px);
+  background:var(--soft-blue);
+  border-color:var(--accent);
+}
+.cert-modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s ease;
+  z-index:120;
+}
+.cert-modal.open{opacity:1;pointer-events:auto;}
+.cert-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(17,17,17,0.45);
+}
+.cert-modal-dialog{
+  position:relative;
+  width:min(840px, 92vw);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:0 28px 70px rgba(17,17,17,0.18);
+  z-index:1;
+}
+.cert-modal-close{
+  position:absolute;
+  top:16px;right:16px;
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--border);background:rgba(255,255,255,0.9);color:var(--text);
+  font-size:1.1rem;cursor:pointer;z-index:2;
+}
+.cert-modal-preview{
+  height:420px;
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--border);
+  padding:28px;
+  background:linear-gradient(135deg,#edf4ff 0%, #ffffff 43%, #e9f7ef 100%);
+}
+.cert-modal-preview-frame{
+  width:min(92%, 620px);
+  aspect-ratio:16 / 10;
+  border:1px solid rgba(17,17,17,0.18);
+  border-radius:16px;
+  background:rgba(255,255,255,0.42);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+}
+.cert-modal-preview-frame::before{
+  content:"";
+  position:absolute;inset:18px;border:1px solid rgba(17,17,17,0.18);border-radius:12px;
+}
+.certificate-modal-image{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  border-radius:12px;
+  background:rgba(255,255,255,0.6);
+}
+.certificate-modal-placeholder{
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(17,17,17,0.18);
+  border-radius:12px;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:var(--text-soft);
+  text-align:center;
+  font-size:0.62rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-weight:600;
+  background:rgba(255,255,255,0.45);
+}
+.certificate-modal-placeholder small{
+  display:block;
+  font-size:0.56rem;
+  letter-spacing:0.06em;
+  text-transform:none;
+  font-weight:500;
+}
+.cert-modal-preview-frame.has-fallback .certificate-modal-placeholder{display:flex;}
+.cert-modal-preview-frame:not(.has-fallback) .certificate-modal-placeholder{display:none;}
+.cert-modal-info{padding:26px 28px 30px;}
+.cert-modal-info h3{font-size:clamp(1.6rem,2vw,2.2rem);margin:10px 0 8px;}
+.cert-modal-info p{margin:0;color:var(--text-soft);font-size:1rem;}
+.cert-modal-meta{
+  display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;
+  font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-soft);
+}
+.cert-modal-meta span{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:var(--bg);}
+.cert-modal-meta .modal-category{color:var(--accent);}
+@media(max-width:768px){
+  .cert-card{flex-basis:280px;}
+  .cert-image{height:190px;}
+  .cert-modal-preview{height:300px;}
+  .cert-modal-dialog{width:min(92vw, 560px);}
+}
+
+/* ---------- projects ---------- */
+.proj-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:50px;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.project-card{
+  display:grid;
+  grid-template-columns:120px 1fr 220px 40px;
+  align-items:center;
+  gap:32px;
+  padding:44px 24px;
+  border-top:1px solid var(--border);
+  transition:background .35s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+  position:relative;
+  overflow:hidden;
+}
+.project-card:last-child{border-bottom:1px solid var(--border);}
+.project-card:hover{background:var(--soft-blue);transform:translateY(-4px);}
+.project-card:hover .proj-arrow{transform:translate(6px,-6px);}
+.project-card:hover .proj-preview{opacity:1;transform:scale(1) rotate(-1deg);}
+.proj-num{font-family:'Space Grotesk',sans-serif;font-size:1rem;color:var(--text-soft);font-weight:600;}
+.proj-name{font-size:1.7rem;margin-bottom:8px;}
+.proj-desc{color:var(--text-soft);font-size:0.92rem;max-width:420px;}
+.proj-cat{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-top:10px;display:inline-block;}
+.proj-preview{
+  width:180px;height:120px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:linear-gradient(135deg,var(--soft-blue),#ffffff);
+  opacity:0;
+  transform:scale(0.9) rotate(-4deg);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:0.75rem;
+  letter-spacing:0.05em;
+  color:var(--accent);
+  text-transform:uppercase;
+}
+.proj-arrow{
+  justify-self:end;
+  font-size:1.5rem;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+@media(max-width:900px){
+  .project-card{grid-template-columns:1fr 34px;grid-template-areas:"num arrow" "name name" "preview preview";row-gap:16px;padding:32px 16px;}
+  .proj-num{grid-area:num;}
+  .proj-arrow{grid-area:arrow;}
+  .proj-name,.proj-desc,.proj-cat{grid-area:name;}
+  .proj-preview{grid-area:preview;width:100%;height:140px;opacity:1;transform:none;}
+}
+
+/* ---------- contact ---------- */
+.contact-heading{
+  font-size:clamp(2.4rem, 7vw, 5.4rem);
+}
+.contact-lede{
+  margin-top:26px;
+  font-size:1.15rem;
+  color:var(--text-soft);
+  max-width:440px;
+}
+.contact-links{
+  margin-top:70px;
+  border-top:1px solid var(--border);
+}
+.contact-link-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:26px 4px;
+  border-bottom:1px solid var(--border);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.2rem,3vw,1.8rem);
+  font-weight:600;
+  transition:padding-left .3s ease, color .3s ease;
+}
+.contact-link-item:hover{padding-left:14px;color:var(--accent);}
+.contact-link-item:hover .cl-arrow{transform:translate(6px,-6px);opacity:1;}
+.cl-arrow{opacity:0.5;transition:all .3s ease;font-size:1.3rem;}
+.cl-label{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-soft);font-family:'DM Sans',sans-serif;font-weight:500;}
+
+footer{
+  padding:36px 0;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:0.75rem;
+  color:var(--text-soft);
+}
+
+/* ---------- AI assistant ---------- */
+.ai-fab{
+  position:fixed;
+  bottom:26px;right:26px;
+  width:52px;height:52px;
+  border-radius:50%;
+  background:var(--text);
+  color:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;
+  z-index:70;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 4px 18px rgba(0,0,0,0.15);
+  transition:transform .3s cubic-bezier(.3,.8,.3,1.4), background .3s ease;
+  animation:idle-pulse 4.5s ease-in-out infinite;
+}
+.ai-fab:hover{background:var(--accent);transform:scale(1.08);}
+@keyframes idle-pulse{
+  0%,92%,100%{box-shadow:0 4px 18px rgba(0,0,0,0.15);}
+  95%{box-shadow:0 4px 22px rgba(0,85,255,0.35);}
+}
+.ai-tooltip{
+  position:fixed;
+  bottom:86px;right:26px;
+  background:var(--text);
+  color:var(--bg);
+  padding:8px 14px;
+  border-radius:100px;
+  font-size:0.7rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  z-index:70;
+  opacity:0;
+  transform:translateY(6px);
+  transition:all .25s ease;
+  pointer-events:none;
+  white-space:nowrap;
+}
+.ai-fab-wrap:hover .ai-tooltip{opacity:1;transform:translateY(0);}
+
+.ai-panel{
+  position:fixed;
+  bottom:92px;right:26px;
+  width:360px;
+  max-width:calc(100vw - 32px);
+  height:480px;
+  max-height:calc(100vh - 140px);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.14);
+  z-index:75;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(16px) scale(0.98);
+  pointer-events:none;
+  transition:all .3s cubic-bezier(.2,.8,.2,1);
+}
+.ai-panel.open{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.ai-panel-header{
+  padding:16px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-size:0.9rem;
+}
+.ai-panel-close{
+  background:none;border:none;
+  font-size:1.1rem;
+  color:var(--text-soft);
+  cursor:pointer;
+  padding:4px;
+}
+.ai-panel-body{
+  flex:1;
+  overflow-y:auto;
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.ai-msg{
+  font-size:0.85rem;
+  line-height:1.5;
+  max-width:88%;
+  padding:10px 14px;
+  border-radius:14px;
+}
+.ai-msg.bot{
+  background:var(--soft-blue);
+  align-self:flex-start;
+  border-bottom-left-radius:4px;
+}
+.ai-msg.user{
+  background:var(--text);
+  color:var(--bg);
+  align-self:flex-end;
+  border-bottom-right-radius:4px;
+}
+.ai-quick{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:0 18px 14px;
+}
+.ai-quick button{
+  border:1px solid var(--border);
+  background:none;
+  padding:7px 12px;
+  border-radius:100px;
+  font-size:0.7rem;
+  cursor:pointer;
+  color:var(--text-soft);
+  transition:all .2s ease;
+}
+.ai-quick button:hover{border-color:var(--accent);color:var(--accent);}
+.ai-panel-input{
+  display:flex;
+  border-top:1px solid var(--border);
+  padding:10px;
+  gap:8px;
+}
+.ai-panel-input input{
+  flex:1;
+  border:1px solid var(--border);
+  border-radius:100px;
+  padding:10px 16px;
+  font-size:0.85rem;
+  font-family:'DM Sans',sans-serif;
+  outline:none;
+  background:var(--bg);
+  color:var(--text);
+}
+.ai-panel-input input:focus{border-color:var(--accent);}
+.ai-panel-input button{
+  width:40px;height:40px;
+  border-radius:50%;
+  border:none;
+  background:var(--text);
+  color:var(--bg);
+  cursor:pointer;
+  flex-shrink:0;
+  transition:background .2s ease;
+}
+.ai-panel-input button:hover{background:var(--accent);}
+
+::selection{background:var(--accent);color:#fff;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
+
+<a href="#home" class="brand-mark"><span class="brand-dot">✦</span> ASWIN MAULANA</a>
+
+<button class="nav-toggle" id="navToggle" aria-label="Buka menu">☰</button>
+<nav class="navbar-custom" id="navbarCustom">
+  <a class="nav-link-item active" data-section="home" href="#home"><span class="nav-dot"></span>HOME</a>
+  <a class="nav-link-item" data-section="about" href="#about"><span class="nav-dot"></span>ABOUT</a>
+  <a class="nav-link-item" data-section="experience" href="#experience"><span class="nav-dot"></span>EXPERIENCE</a>
+  <a class="nav-link-item" data-section="certificates" href="#certificates"><span class="nav-dot"></span>CERTIFICATES</a>
+  <a class="nav-link-item" data-section="projects" href="#projects"><span class="nav-dot"></span>PROJECTS</a>
+  <a class="nav-link-item" data-section="contact" href="#contact"><span class="nav-dot"></span>CONTACTS</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hero">
+  <div class="container-x">
+    <div class="hero-grid">
+      <div>
+        <div class="label hero-eyebrow">DIGITAL BUSINESS STUDENT & ASPIRING DATA ENGINEER</div>
+        <h1>I BUILD DIGITAL<br>EXPERIENCES<br>WITH DATA.</h1>
+        <p class="hero-desc">Tertarik pada bagaimana data, teknologi, dan digital product bertemu dengan bisnis untuk menyelesaikan masalah yang nyata. Saya belajar membangun sistem, bukan sekadar ide.</p>
+        <a href="#projects" class="hero-cta">EXPLORE MY WORK <span>↗</span></a>
+        <div class="hero-meta">
+          <div>Based in Indonesia</div>
+          <div>Digital Business Student</div>
+          <div>Available for Collaboration</div>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <div class="portrait-frame">
+          <div class="portrait-inner">
+            <div class="portrait-monogram">AM</div>
+            <div class="portrait-tag">Danendra Aswin M.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">SCROLL TO EXPLORE <span class="arrow-down">↓</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container-x">
+    <div class="about-grid">
+      <div class="reveal portrait-wrap">
+        <div class="portrait-frame" style="transform:rotate(2deg);">
+          <div class="portrait-inner">
+            <div class="portrait-monogram">A</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="label" style="margin-bottom:18px;">ABOUT</div>
+        <h2 class="about-heading">MORE THAN JUST<br>A STUDENT.</h2>
+        <p class="about-text">Aswin adalah mahasiswa Digital Business yang penasaran dengan cara kerja sistem di balik layar. Ketertarikannya berada di antara data, teknologi, dan digital product—tiga hal yang semakin dekat dengan cara bisnis modern bekerja.</p>
+        <p class="about-text" style="margin-top:14px;">Ia percaya bahwa teknologi paling berarti ketika digunakan untuk menyelesaikan masalah nyata, bukan sekadar mengikuti tren. Karena itu, ia terus belajar membangun produk digital sambil memahami bagaimana teknologi, data, dan bisnis dapat bekerja bersama untuk menciptakan sesuatu yang benar-benar berguna.</p>
+        <div class="pill-row">
+          <span class="pill">DATA</span>
+          <span class="pill">BUSINESS</span>
+          <span class="pill">TECH</span>
+          <span class="pill">AI</span>
+          <span class="pill">DIGITAL PRODUCT</span>
+        </div>
+      </div>
+    </div>
+    <div class="ticker-wrap reveal">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container-x">
+    <div class="exp-head reveal">
+      <div>
+        <div class="label" style="margin-bottom:18px;">EXPERIENCE</div>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);">WHERE I'VE<br>SPENT MY TIME.</h2>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="exp-item">
+        <div class="exp-num">01</div>
+        <div class="exp-year">2024 — Present</div>
+        <div class="exp-body">
+          <h3>HR Administration</h3>
+          <div class="exp-org">PT Guwatirta Sejahtera (UTRA AMDK)</div>
+          <p class="exp-desc">Mengelola administrasi HR dan melakukan screening pelamar untuk menemukan kandidat yang sesuai dengan standar serta kebutuhan perusahaan.
+</p>
+        </div>
+        <div class="exp-arrow">↗</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-num">02</div>
+        <div class="exp-year">2024 · Part-time</div>
+        <div class="exp-body">
+          <h3>Administration — Restaurant Unit</h3>
+          <div class="exp-org">Part-Time Role</div>
+          <p class="exp-desc">Mengelola administrasi operasional, mulai dari input data TTBD, QC, dan PO hingga penyusunan budgeting serta proses pelunasan piutang, dengan memastikan data tetap rapi dan akurat.
+</p>
+        </div>
+        <div class="exp-arrow">↗</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-num">03</div>
+        <div class="exp-year">2024 — Present</div>
+        <div class="exp-body">
+          <h3>Digital Business Student</h3>
+          <div class="exp-org">Sugeng Hartono University</div>
+          <p class="exp-desc">Mendalami perpotongan antara bisnis, data, dan teknologi digital melalui studi dan proyek mandiri.</p>
+        </div>
+        <div class="exp-arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="container-x">
+    <div class="exp-head reveal">
+      <div>
+        <div class="label" style="margin-bottom:18px;">05 — CERTIFICATES</div>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);">ALWAYS<br>LEARNING.</h2>
+      </div>
+    </div>
+    <div class="certificates-wrap reveal">
+      <p class="about-text" style="margin:0; max-width:680px;">A collection of certificates and learning experiences that shaped my skills along the way.</p>
+      <div class="cert-gallery" aria-label="Certificate gallery">
+        <article class="cert-card" tabindex="0" data-title="Mandarin Language Course" data-institution="zeramandarin" data-year="2025" data-category="TRAINING" data-tone="blue" data-image="public/images/certificates/Screenshot 2026-09-17 111224.png">
+          <div class="cert-image-shell" data-tone="blue" aria-label="Mandarin Language Course certificate preview">
+            <!-- GANTI GAMBAR SERTIFIKAT DI SINI -->
+            <img src="public/images/certificates/Screenshot 2026-09-17 111224.png" alt="Certificate 01" class="certificate-image" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('has-fallback');">
+            <div class="certificate-placeholder" aria-hidden="true"><span>CERTIFICATE IMAGE</span><small>Replace image here</small></div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">Mandarin Language Course HSK 1 - 2 Basic Conversational Mandarin</h3>
+            <p class="cert-meta">zeramandarin</p>
+            <div class="cert-foot">
+              <span>2025</span>
+              <span class="cert-category">COURSE</span>
+              <span class="cert-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cert-card" tabindex="0" data-title="Best Idea Award for Innovative Project" data-institution="Kaggle / Coursera" data-year="2025" data-category="COURSE" data-tone="green" data-image="public/images/certificates/WhatsApp Image 2026-09-17 at 11.35.05 AM.jpeg">
+          <div class="cert-image-shell" data-tone="green" aria-label="Best Idea Award certificate preview">
+            <!-- GANTI GAMBAR SERTIFIKAT DI SINI -->
+            <img src="public/images/certificates/WhatsApp Image 2026-09-17 at 11.35.05 AM.jpeg" alt="Certificate 02" class="certificate-image" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('has-fallback');">
+            <div class="certificate-placeholder" aria-hidden="true"><span>CERTIFICATE IMAGE</span><small>Replace image here</small></div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">Best Idea Award for Innovative Project</h3>
+            <p class="cert-meta">Project Blue Sense AI</p>
+            <div class="cert-foot">
+              <span>2026</span>
+              <span class="cert-category">COURSE</span>
+              <span class="cert-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cert-card" tabindex="0" data-title="Coming Soon" data-institution="DataCamp" data-year="2025" data-category="WORKSHOP" data-tone="amber" data-image="/images/certificates/certificate-03.jpg">
+          <div class="cert-image-shell" data-tone="amber" aria-label="Power BI Essentials certificate preview">
+            <!-- GANTI GAMBAR SERTIFIKAT DI SINI -->
+            <img src="/images/certificates/certificate-03.jpg" alt="Certificate 03" class="certificate-image" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('has-fallback');">
+            <div class="certificate-placeholder" aria-hidden="true"><span>CERTIFICATE IMAGE</span><small>Replace image here</small></div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">Coming Soon</h3>
+            <p class="cert-meta">Coming Soon</p>
+            <div class="cert-foot">
+              <span>2025</span>
+              <span class="cert-category">WORKSHOP</span>
+              <span class="cert-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cert-card" tabindex="0" data-title="Coming Soon" data-institution="Udemy" data-year="2024" data-category="CERTIFICATION" data-tone="violet" data-image="/images/certificates/certificate-04.jpg">
+          <div class="cert-image-shell" data-tone="violet" aria-label="Business Analytics Fundamentals certificate preview">
+            <!-- GANTI GAMBAR SERTIFIKAT DI SINI -->
+            <img src="/images/certificates/certificate-04.jpg" alt="Certificate 04" class="certificate-image" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('has-fallback');">
+            <div class="certificate-placeholder" aria-hidden="true"><span>CERTIFICATE IMAGE</span><small>Replace image here</small></div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">Coming Soon</h3>
+            <p class="cert-meta">Coming Soon</p>
+            <div class="cert-foot">
+              <span>2024</span>
+              <span class="cert-category">CERTIFICATION</span>
+              <span class="cert-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container-x">
+    <div class="proj-head reveal">
+      <div>
+        <div class="label" style="margin-bottom:18px;">SELECTED WORKS / 2024—2026</div>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);">THINGS I'VE<br>BEEN BUILDING.</h2>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="project-card">
+        <div class="proj-num">01</div>
+        <div>
+          <h3 class="proj-name">Subflow</h3>
+          <p class="proj-desc">Manage digital products, without the mess. SubFlow menghadirkan pengalaman pengelolaan yang simpel, rapi, dan terasa premium.</p>
+          <a class="contact-link-item" href=" https://aswinm-shuai.github.io/Subfloww/" target="_blank" rel="noopener"></a>
+          <span class="proj-cat">SaaS · PWA</span>
+        </div>
+        <div class="proj-preview">SUBFLOW</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="project-card">
+        <div class="proj-num">02</div>
+        <div>
+          <h3 class="proj-name">Syncro OS</h3>
+          <p class="proj-desc">Run your business, not the chaos. Syncro OS bantu UMKM mengelola operasional, stok, HPP, hingga laporan dalam satu sistem yang simpel.</p>
+          <a class="contact-link-item" href=" https://aswinm-shuai.github.io/Syncro-OS/" target="_blank" rel="noopener"></a>
+          <span class="proj-cat">Digital Operations</span>
+        </div>
+        <div class="proj-preview">SYNCRO OS</div>
+        <div class="proj-arrow">↗</div>
+      </div> 
+      <div class="project-card">
+        <div class="proj-num">03</div>
+        <div>
+          <h3 class="proj-name">Bluesense AI</h3>
+          <p class="proj-desc">Turning water data into smarter farming decisions — BlueSense AI membantu pembudidaya memantau kondisi perairan dan merespons perubahan lebih cepat.</p>
+              <a class="contact-link-item" href="https://aswinm-shuai.github.io/Blue-Sense-AI/" target="_blank" rel="noopener"></a>
+          <span class="proj-cat">AI · Aquaculture</span>
+        </div>
+        <div class="proj-preview">BLUESENSE</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container-x">
+    <div class="reveal">
+      <div class="label" style="margin-bottom:18px;">CONTACT</div>
+      <h2 class="contact-heading">LET'S BUILD<br>SOMETHING<br>USEFUL.</h2>
+      <p class="contact-lede">Have an idea? Let's talk.</p>
+      <div class="contact-links">
+        <a class="contact-link-item" href="mailto:aswinmaulana212@gmail.com">
+          <span>hello@aswin.dev <span class="cl-label">Email</span></span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a class="contact-link-item" href="https://www.linkedin.com/in/aswin-maulana-a791712a7?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">
+          <span>LinkedIn <span class="cl-label">Connect</span></span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a class="contact-link-item" href="https://github.com/aswinm-shuai" target="_blank" rel="noopener">
+          <span>GitHub <span class="cl-label">Code</span></span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a class="contact-link-item" href="https://www.instagram.com/danendraam?stkn=MXh0Zzg0b2VlOGg1ZA==" target="_blank" rel="noopener">
+          <span>Instagram <span class="cl-label">Follow</span></span>
+          <span class="cl-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container-x">
+    <footer>
+      <div>© 2026 Aswin. Build with data, care, and a bit of caffeine.</div>
+      <div>Jaten, Central Java, Indonesia</div>
+    </footer>
+  </div>
+</section>
+
+<!-- AI ASSISTANT -->
+<div class="ai-fab-wrap">
+  <div class="ai-tooltip">ASK MY AI ✦</div>
+  <button class="ai-fab" id="aiFab" aria-label="Buka Aswin AI">✦</button>
+</div>
+
+<div class="ai-panel" id="aiPanel">
+  <div class="ai-panel-header">
+    <span>✦ ASWIN AI</span>
+    <button class="ai-panel-close" id="aiClose" aria-label="Tutup">✕</button>
+  </div>
+  <div class="ai-panel-body" id="aiBody">
+    <div class="ai-msg bot">Hai! Aku asisten kecil di sini untuk membantu kamu mengenal Aswin. Mau tanya soal apa?</div>
+  </div>
+  <div class="ai-quick" id="aiQuick">
+    <button data-q="who">Who is Aswin?</button>
+    <button data-q="projects">His projects?</button>
+    <button data-q="skills">His skills?</button>
+    <button data-q="contact">How to contact?</button>
+  </div>
+  <div class="ai-panel-input">
+    <input type="text" id="aiInput" placeholder="Tulis pertanyaanmu...">
+    <button id="aiSend" aria-label="Kirim">→</button>
+  </div>
+</div>
+
+<div class="cert-modal" id="certificateModal" aria-hidden="true">
+  <div class="cert-modal-backdrop" data-close-modal="true"></div>
+  <div class="cert-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Close certificate">✕</button>
+    <div class="cert-modal-preview">
+      <div class="cert-modal-preview-frame" id="modalPreviewFrame" aria-hidden="true"></div>
+    </div>
+    <div class="cert-modal-info">
+      <div class="label">CERTIFICATE</div>
+      <h3 id="modalTitle">Data Analytics Training</h3>
+      <p id="modalInstitution">Google / Coursera</p>
+      <div class="cert-modal-meta">
+        <span id="modalYear">2026</span>
+        <span class="modal-category" id="modalCategory">TRAINING</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---- ticker content ----
+const tickerWords = ["DATA","BUSINESS","TECHNOLOGY","DIGITAL PRODUCT","AI"];
+let tickerHTML = "";
+for(let i=0;i<2;i++){
+  tickerWords.forEach(w=>{ tickerHTML += `<span>${w}</span><span class="accent">✦</span>`; });
+}
+document.getElementById('tickerTrack').innerHTML = tickerHTML;
+
+// ---- certificate lightbox ----
+const certModal = document.getElementById('certificateModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalInstitution = document.getElementById('modalInstitution');
+const modalYear = document.getElementById('modalYear');
+const modalCategory = document.getElementById('modalCategory');
+const modalPreviewFrame = document.getElementById('modalPreviewFrame');
+const certModalClose = document.getElementById('certModalClose');
+
+function openCertificateModal(card){
+  const title = card.dataset.title;
+  const institution = card.dataset.institution;
+  const year = card.dataset.year;
+  const category = card.dataset.category;
+  const tone = card.dataset.tone || 'blue';
+  const imageSrc = card.dataset.image || '';
+
+  modalTitle.textContent = title;
+  modalInstitution.textContent = institution;
+  modalYear.textContent = year;
+  modalCategory.textContent = category;
+  modalPreviewFrame.style.background = `linear-gradient(135deg, ${tone === 'blue' ? '#edf4ff' : tone === 'green' ? '#edfaf3' : tone === 'amber' ? '#fff6e6' : '#f3edff'} 0%, #ffffff 40%, ${tone === 'blue' ? '#dfe9ff' : tone === 'green' ? '#dff5ec' : tone === 'amber' ? '#fff0cf' : '#eadfff'} 100%)`;
+  modalPreviewFrame.classList.remove('has-fallback');
+  modalPreviewFrame.innerHTML = `
+    <img src="${imageSrc}" alt="${title}" class="certificate-modal-image" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('has-fallback');">
+    <div class="certificate-modal-placeholder" aria-hidden="true"><span>CERTIFICATE IMAGE</span><small>Replace image here</small></div>
+  `;
+  certModal.classList.add('open');
+  certModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCertificateModal(){
+  certModal.classList.remove('open');
+  certModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.cert-card').forEach(card => {
+  card.addEventListener('click', () => openCertificateModal(card));
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openCertificateModal(card);
+    }
+  });
+});
+
+certModalClose.addEventListener('click', closeCertificateModal);
+certModal.addEventListener('click', (event) => {
+  if (event.target.matches('[data-close-modal="true"]')) closeCertificateModal();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && certModal.classList.contains('open')) closeCertificateModal();
+});
+
+// ---- mobile nav toggle ----
+const navToggle = document.getElementById('navToggle');
+const navbarCustom = document.getElementById('navbarCustom');
+navToggle.addEventListener('click', ()=>{
+  navbarCustom.classList.toggle('mobile-open');
+  navToggle.textContent = navbarCustom.classList.contains('mobile-open') ? '✕' : '☰';
+});
+document.querySelectorAll('.nav-link-item').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    navbarCustom.classList.remove('mobile-open');
+    navToggle.textContent = '☰';
+  });
+});
+
+// ---- scroll spy + progress ----
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link-item');
+const scrollFill = document.getElementById('scrollFill');
+
+function onScroll(){
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  scrollFill.style.height = docHeight > 0 ? Math.min(100,(scrollTop/docHeight)*100) + '%' : '0%';
+
+  let current = sections[0].id;
+  sections.forEach(sec=>{
+    const rect = sec.getBoundingClientRect();
+    if(rect.top <= window.innerHeight*0.4){ current = sec.id; }
+  });
+  navLinks.forEach(l=>{
+    l.classList.toggle('active', l.dataset.section === current);
+  });
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// ---- scroll reveal ----
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+// ---- AI assistant ----
+const aiFab = document.getElementById('aiFab');
+const aiPanel = document.getElementById('aiPanel');
+const aiClose = document.getElementById('aiClose');
+const aiBody = document.getElementById('aiBody');
+const aiInput = document.getElementById('aiInput');
+const aiSend = document.getElementById('aiSend');
+const aiQuick = document.getElementById('aiQuick');
+
+aiFab.addEventListener('click', ()=>{ aiPanel.classList.toggle('open'); if(aiPanel.classList.contains('open')) aiInput.focus(); });
+aiClose.addEventListener('click', ()=> aiPanel.classList.remove('open'));
+
+const knowledge = {
+  who: "Aswin (Danendra Aswin Maulana) adalah mahasiswa Digital Business yang tertarik pada data, teknologi, dan digital product. Ia suka membangun sistem yang benar-benar menyelesaikan masalah.",
+  background: "Aswin sedang menempuh studi Digital Business dengan ketertarikan pada teknologi, data, dan digital product. Berpengalaman di bidang HR Administration dan operasional, ia terbiasa bekerja dengan data, proses, dan detail—hal-hal yang membentuk cara kerjanya menjadi lebih terstruktur dan adaptable.",
+  education: "Aswin adalah mahasiswa Digital Business Student sejak 2024, fokus pada perpotongan antara bisnis, data, dan teknologi.",
+  experience: "Pengalaman Aswin meliputi: HR Administration di PT Guwatirta Sejahtera (2024—sekarang), Administration part-time di sebuah restoran (2024), dan sebagai Digital Business Student (2024—sekarang).",
+  skills: "Aswin punya ketertarikan dan kemampuan di area Data, Business, Tech, AI, dan Digital Product. Ia sedang memperdalam skill sebagai aspiring data engineer.",
+  projects: "Tiga project utama Aswin: Subflow (SaaS manajemen digital product), Syncro OS (sistem operasi digital untuk UMKM), dan Bluesense AI (pemantauan budidaya perairan berbasis AI).",
+  subflow: "Subflow adalah produk digital untuk manajemen digital product dengan pendekatan SaaS/PWA yang premium.",
+  syncro: "Syncro OS adalah sistem operasi digital yang dirancang untuk membantu UMKM mengelola operasional mereka.",
+  bluesense: "Bluesense AI adalah sistem AI untuk memantau budidaya perairan (aquaculture) secara real-time.",
+  contact: "Kamu bisa menghubungi Aswin lewat email di hello@aswin.dev, atau melalui LinkedIn, GitHub, dan Instagram di bagian Contact.",
+  technology: "Aswin bekerja di area yang menghubungkan data, AI, dan digital product dengan kebutuhan bisnis nyata."
+};
+
+function addMsg(text, who){
+  const div = document.createElement('div');
+  div.className = 'ai-msg ' + who;
+  div.textContent = text;
+  aiBody.appendChild(div);
+  aiBody.scrollTop = aiBody.scrollHeight;
+}
+
+function answer(raw){
+  const q = raw.toLowerCase();
+  if(q.includes('contact') || q.includes('hubung') || q.includes('email')) return knowledge.contact;
+  if(q.includes('project') || q.includes('proyek') || q.includes('karya')) return knowledge.projects;
+  if(q.includes('subflow')) return knowledge.subflow;
+  if(q.includes('syncro')) return knowledge.syncro;
+  if(q.includes('bluesense')) return knowledge.bluesense;
+  if(q.includes('skill') || q.includes('kemampuan') || q.includes('bisa apa')) return knowledge.skills;
+  if(q.includes('experience') || q.includes('pengalaman') || q.includes('kerja')) return knowledge.experience;
+  if(q.includes('education') || q.includes('kuliah') || q.includes('sekolah') || q.includes('kampus')) return knowledge.education;
+  if(q.includes('background') || q.includes('latar belakang')) return knowledge.background;
+  if(q.includes('who') || q.includes('siapa')) return knowledge.who;
+  if(q.includes('technology') || q.includes('teknologi')) return knowledge.technology;
+  return "Aku belum punya jawaban pasti untuk itu, tapi kamu bisa cek section About, Experience, atau Projects di atas — atau langsung hubungi Aswin lewat Contact.";
+}
+
+function handleSend(){
+  const val = aiInput.value.trim();
+  if(!val) return;
+  addMsg(val, 'user');
+  aiInput.value = '';
+  setTimeout(()=> addMsg(answer(val), 'bot'), 350);
+}
+aiSend.addEventListener('click', handleSend);
+aiInput.addEventListener('keydown', e=>{ if(e.key === 'Enter') handleSend(); });
+
+aiQuick.addEventListener('click', e=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  const map = {
+    who: "Who is Aswin?",
+    projects: "Tell me about his projects.",
+    skills: "What are his skills?",
+    contact: "How can I contact him?"
+  };
+  const q = map[btn.dataset.q];
+  addMsg(q, 'user');
+  setTimeout(()=> addMsg(answer(btn.dataset.q), 'bot'), 350);
+});
+</script>
+</body>
+</html>
