@@ -100,6 +100,12 @@
     #key-findings .chart-trigger img { width:100%; max-width:100%; min-width:0; height:auto; }
     #key-findings .supporting-chart { margin-top:24px; }
     #key-findings .supporting-chart-label { display:block; margin:0 0 8px; color:var(--text-soft); font-size:0.72rem; line-height:1.4; letter-spacing:0.08em; text-transform:uppercase; }
+    @media (max-width:480px) {
+      #summary > .chart-card { width:100%; margin:0; }
+      #summary > .chart-card .chart-frame { width:100%; overflow:visible; }
+      #summary > .chart-card .chart-trigger { max-width:100%; }
+      #summary > .chart-card .chart-trigger img { width:100%; max-width:100%; min-width:0; height:auto; }
+    }
     details { border:1px solid var(--border); border-radius:14px; padding:14px 16px; background:rgba(255,255,255,0.5); margin-top:16px; }
     details summary { cursor:pointer; font-weight:700; color:var(--accent); }
     details p:last-child { margin-bottom:0; }
