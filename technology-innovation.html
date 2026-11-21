@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology &amp; Innovation | Aswin</title>
+  <meta name="description" content="Digital products, applications, and technology-driven solutions built by Aswin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#FDFFF6;
+      --accent:#0055FF;
+      --text:#111111;
+      --text-soft:#6B6B6B;
+      --soft-blue:#E8EFFF;
+      --border:#E8E8E2;
+      --surface:#FFFFFF;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'DM Sans',-apple-system,'Segoe UI',sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none;}
+    h1,h2,h3,h4{
+      font-family:'Space Grotesk','DM Sans',sans-serif;
+      font-weight:700;
+      letter-spacing:-0.02em;
+      line-height:1.02;
+      margin:0;
+    }
+    .container-x{max-width:1320px;margin:0 auto;padding:0 32px;}
+    .page-shell{padding:110px 0 70px;}
+    .breadcrumb{
+      display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+      margin-bottom:28px;color:var(--text-soft);
+      font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+    }
+    .breadcrumb a:hover{color:var(--accent);}
+    .page-heading{
+      padding:38px 0 48px;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+    .label{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-soft);font-weight:500;}
+    .page-heading h1{font-size:clamp(2.4rem,6vw,4.4rem);margin-top:16px;}
+    .page-heading p{max-width:650px;margin:18px 0 0;color:var(--text-soft);font-size:1.08rem;}
+    .project-list{padding-top:48px;}
+    .project-list .label{margin-bottom:18px;}
+    .project-card{
+      display:grid;
+      grid-template-columns:120px 1fr 220px 40px;
+      align-items:center;
+      gap:32px;
+      padding:44px 24px;
+      border-top:1px solid var(--border);
+      transition:background .35s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+      position:relative;
+      overflow:hidden;
+    }
+    .project-card:last-child{border-bottom:1px solid var(--border);}
+    .project-card:hover{background:var(--soft-blue);transform:translateY(-4px);}
+    .project-card:hover .proj-arrow{transform:translate(6px,-6px);}
+    .project-card:hover .proj-preview{opacity:1;transform:scale(1) rotate(-1deg);}
+    .proj-num{font-family:'Space Grotesk',sans-serif;font-size:1rem;color:var(--text-soft);font-weight:600;}
+    .proj-name{font-size:1.7rem;margin-bottom:8px;}
+    .proj-desc{color:var(--text-soft);font-size:0.92rem;max-width:420px;}
+    .proj-cat{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-top:10px;display:inline-block;}
+    .proj-preview{
+      width:180px;height:120px;border-radius:12px;border:1px solid var(--border);
+      background:linear-gradient(135deg,var(--soft-blue),#ffffff);
+      opacity:0;transform:scale(0.9) rotate(-4deg);
+      transition:all .4s cubic-bezier(.2,.8,.2,1);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.75rem;
+      letter-spacing:0.05em;color:var(--accent);text-transform:uppercase;
+    }
+    .proj-arrow{justify-self:end;font-size:1.5rem;transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+    .back-link{
+      display:inline-flex;align-items:center;gap:8px;margin-top:30px;padding:12px 18px;
+      border:1px solid var(--border);border-radius:999px;background:var(--surface);
+      font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;transition:all .25s ease;
+    }
+    .back-link:hover{background:var(--soft-blue);border-color:var(--accent);}
+    @media(max-width:900px){
+      .project-card{grid-template-columns:1fr 34px;grid-template-areas:"num arrow" "name name" "preview preview";row-gap:16px;padding:32px 16px;}
+      .proj-num{grid-area:num;}
+      .proj-arrow{grid-area:arrow;}
+      .proj-name,.proj-desc,.proj-cat{grid-area:name;}
+      .proj-preview{grid-area:preview;width:100%;height:140px;opacity:1;transform:none;}
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <div class="container-x">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="index.html#projects">Projects</a>
+        <span>/</span>
+        <span>Technology &amp; Innovation</span>
+      </nav>
+
+      <header class="page-heading">
+        <div class="label">SELECTED WORKS / 2024—2026</div>
+        <h1>TECHNOLOGY &amp; INNOVATION</h1>
+        <p>A collection of digital products, applications, and technology-driven solutions I've built.</p>
+      </header>
+
+      <section class="project-list" aria-label="Technology and innovation projects">
+        <div class="label">PROJECTS</div>
+        <div class="project-card">
+          <div class="proj-num">01</div>
+          <div>
+            <h2 class="proj-name">Subflow</h2>
+            <p class="proj-desc">Manage digital products, without the mess. SubFlow menghadirkan pengalaman pengelolaan yang simpel, rapi, dan terasa premium.</p>
+            <a class="contact-link-item" href=" https://aswinm-shuai.github.io/Subfloww/" target="_blank" rel="noopener"></a>
+            <span class="proj-cat">SaaS · PWA</span>
+          </div>
+          <div class="proj-preview">SUBFLOW</div>
+          <div class="proj-arrow">↗</div>
+        </div>
+        <div class="project-card">
+          <div class="proj-num">02</div>
+          <div>
+            <h2 class="proj-name">Syncro OS</h2>
+            <p class="proj-desc">Run your business, not the chaos. Syncro OS bantu UMKM mengelola operasional, stok, HPP, hingga laporan dalam satu sistem yang simpel.</p>
+            <a class="contact-link-item" href=" https://aswinm-shuai.github.io/Syncro-OS/" target="_blank" rel="noopener"></a>
+            <span class="proj-cat">Digital Operations</span>
+          </div>
+          <div class="proj-preview">SYNCRO OS</div>
+          <div class="proj-arrow">↗</div>
+        </div>
+        <div class="project-card">
+          <div class="proj-num">03</div>
+          <div>
+            <h2 class="proj-name">Bluesense AI</h2>
+            <p class="proj-desc">Turning water data into smarter farming decisions — BlueSense AI membantu pembudidaya memantau kondisi perairan dan merespons perubahan lebih cepat.</p>
+            <a class="contact-link-item" href="https://aswinm-shuai.github.io/Blue-Sense-AI/" target="_blank" rel="noopener"></a>
+            <span class="proj-cat">AI · Aquaculture</span>
+          </div>
+          <div class="proj-preview">BLUESENSE</div>
+          <div class="proj-arrow">↗</div>
+        </div>
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
