@@ -1,5 +1,0 @@
-Order ID,Customer ID,Category,Item,Price,Quantity,Order Total,Order Date,Payment Method
-ORD_146656,CUST_077,Main Dishes,Grilled Chicken,15.0,3,45.0,2023-02-15,Cash
-ORD_337802,CUST_034,Desserts,Fruit Salad,4.0,5,20.0,2022-11-13,Credit Card
-ORD_630508,CUST_075,Drinks,Unknown Item,2.5,2,5.0,2022-08-09,Credit Card
-ORD_743636,CUST_085,Main Dishes,Vegetarian Platter,14.0,5,70.0,2022-08-07,Unknown

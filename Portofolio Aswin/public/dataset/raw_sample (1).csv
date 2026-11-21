@@ -1,5 +1,0 @@
-Order ID,Customer ID,Category,Item,Price,Quantity,Order Total,Order Date,Payment Method
-ORD_146656,CUST_077,Main Dishes,,15.0,3.0,45.0,2/15/2023,Cash
-ORD_337802,CUST_034,Desserts,,4.0,5.0,20.0,11/13/2022,Credit Card
-ORD_630508,CUST_075,Drinks,,,2.0,5.0,8/9/2022,Credit Card
-ORD_743636,CUST_085,Main Dishes,Vegetarian Platter,14.0,5.0,70.0,8/7/2022,
